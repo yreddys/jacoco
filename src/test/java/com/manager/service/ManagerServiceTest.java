@@ -34,4 +34,20 @@ public class ManagerServiceTest {
 		assertEquals(movieDto.getManagerId(), savedDto.getManagerId());
 		assertEquals(movieDto.getManagerName(), savedDto.getManagerName());
 	}
+
+	@Test
+	void getManagerById() {
+		Manager manager = new Manager();
+		manager.setManagerId(1);
+		manager.setManagerName("Test Manager");
+		when(managerRepository.findById(1)).thenReturn(java.util.Optional.of(manager));
+
+		// When
+		ManagerDto managerDto = managerService.getManagerById(1);
+
+		// Then
+		assertEquals(manager.getManagerId(), managerDto.getManagerId());
+		assertEquals(manager.getManagerName(), managerDto.getManagerName());
+
+	}
 }

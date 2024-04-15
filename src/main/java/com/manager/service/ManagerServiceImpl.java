@@ -28,4 +28,12 @@ public class ManagerServiceImpl implements ManagerService {
 		return Managerdto;
 	}
 
+	@Override
+	public ManagerDto getManagerById(int managerId) {
+		ManagerDto managerDto = new ManagerDto();
+		Manager mana = managerRepository.findById(managerId).get();
+		managerDto.setManagerId(mana.getManagerId());
+		managerDto.setManagerName(mana.getManagerName());
+		return managerDto;
+	}
 }

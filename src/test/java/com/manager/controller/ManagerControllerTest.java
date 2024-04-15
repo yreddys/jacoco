@@ -1,8 +1,11 @@
 package com.manager.controller;
 
 import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.Mockito.when;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import org.junit.jupiter.api.Test;
@@ -31,14 +34,31 @@ public class ManagerControllerTest {
         ManagerDto managerDto = new ManagerDto();
         managerDto.setManagerId(1);
         managerDto.setManagerName("Hello");
-        
+
         // Stubbing the createManager method of managerService mock to return managerDto
         when(managerService.createManager(any(ManagerDto.class))).thenReturn(managerDto);
 
         // Act & Assert
-        mockMvc.perform(post("/manager/save") // Ensure this matches your endpoint URL
+        mockMvc.perform(post("/manager/save")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(new ObjectMapper().writeValueAsString(managerDto)))
                 .andExpect(status().isCreated());
+    }
+
+    @Test
+    void getManagerById() throws Exception {
+        // Arrange
+        ManagerDto managerDto = new ManagerDto();
+        managerDto.setManagerId(1);
+        managerDto.setManagerName("Test Manager");
+
+        // Stubbing the getManagerById method of managerService mock to return managerDto
+        when(managerService.getManagerById(anyInt())).thenReturn(managerDto);
+
+        // Act & Assert
+        mockMvc.perform(get("/manager/{managerId}", 1))
+                .andExpect(status().isOk())
+                .andExpect(content().contentType(MediaType.APPLICATION_JSON))
+                .andExpect(content().json(new ObjectMapper().writeValueAsString(managerDto)));
     }
 }

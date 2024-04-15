@@ -6,4 +6,6 @@ public interface ManagerService {
 
 	ManagerDto createManager(ManagerDto managerDto);
 
+	ManagerDto getManagerById(int managerId);
+
 }
