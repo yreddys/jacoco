@@ -1,4 +1,7 @@
-        <plugin>
+Jacoco
+	                   
+		    
+                               <plugin>
 				<groupId>org.jacoco</groupId>
 				<artifactId>jacoco-maven-plugin</artifactId>
 				<version>0.8.11</version>
@@ -21,7 +24,7 @@
 
 
 
-SOnar 
+Sonar 
 
 
     <properties>
