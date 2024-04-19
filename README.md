@@ -31,4 +31,4 @@ Sonar
 		<sonar.host.url>http://13.235.69.171:9000/</sonar.host.url>
 		<sonar.login>admin</sonar.login>
 		<sonar.password>admin</sonar.password>
-  </properties>
+           </properties>
