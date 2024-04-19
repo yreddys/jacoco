@@ -20,7 +20,7 @@ Run AS Mvn test
 						</goals>
 					</execution>
 				</executions>
-			</plugin>
+			    </plugin>
 			
 
 
