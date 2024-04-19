@@ -1,4 +1,5 @@
-Jacoco
+Jacoco 
+Run AS Mvn test
 	                   
 		    
                                <plugin>
@@ -25,7 +26,7 @@ Jacoco
 
 
 Sonar 
-
+Goal: Run as Mvn Build  -> sonar:sonar
 
     <properties>
 		<sonar.host.url>http://13.235.69.171:9000/</sonar.host.url>
